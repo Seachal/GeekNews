@@ -6,8 +6,8 @@ buildscript {
         jcenter()
         google()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.3'
+    dependencies 
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 //        https://stackoverflow.com/questions/33404552/execution-failed-for-task-appcompiledebugjavawithjavac-in-android-studio
         classpath "io.realm:realm-gradle-plugin:4.2.0"
