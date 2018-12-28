@@ -4,6 +4,7 @@ apply plugin: 'realm-android'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
         applicationId rootProject.ext.android.applicationId
@@ -40,11 +41,13 @@ android {
         }
     }
 
-    packagingOptions {
-        exclude "lib/mips/librealm-jni.so"
-        exclude "lib/x86/librealm-jni.so"
-        exclude "lib/x86_64/librealm-jni.so"
-    }
+//    注释掉 ，解决应用崩溃，javasatisfaction 异常，好像是so包和硬件不匹配的问题，+
+//    realm 升级到5.8.0已经不需要下面这种写法了。
+//    packagingOptions {
+//        exclude "lib/mips/librealm-jni.so"
+//        exclude "lib/x86/librealm-jni.so"
+//        exclude "lib/x86_64/librealm-jni.so"
+//    }
 // 为隐藏异常，暂时注释掉
     splits {
         abi {
@@ -55,10 +58,16 @@ android {
         }
     }
 
+    flavorDimensions "GeekNews"
 
-    flavorDimensions "deep"
+    //  buildToolsVersion '27.0.3'
 
-    buildToolsVersion '27.0.3'
+//    7->8 解决一些异常
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {

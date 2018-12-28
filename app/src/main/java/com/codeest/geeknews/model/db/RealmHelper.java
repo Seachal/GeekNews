@@ -104,7 +104,9 @@ public class RealmHelper implements DBHelper {
     @Override
     public List<RealmLikeBean> getLikeList() {
         //使用findAllSort ,先findAll再result.sort无效
-        RealmResults<RealmLikeBean> results = mRealm.where(RealmLikeBean.class).findAllSorted("time");
+        RealmResults<RealmLikeBean> results = mRealm.where(RealmLikeBean.class)
+//                .findAllSorted("time");
+        .sort("time").findAll();
         return mRealm.copyFromRealm(results);
     }
 
